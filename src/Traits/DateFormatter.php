@@ -24,6 +24,8 @@ trait DateFormatter
      */
     public $pay_until_days;
 
+    public $pay_until_date;
+
     /**
      * @param Carbon $date
      * @return $this
@@ -57,6 +59,14 @@ trait DateFormatter
         return $this;
     }
 
+
+    public function payUntilDate($date)
+    {
+        $this->pay_until_date = $date;
+
+        return $this;
+    }
+
     /**
      * @return mixed
      */
@@ -70,6 +80,9 @@ trait DateFormatter
      */
     public function getPayUntilDate()
     {
+        if($this->pay_until_date) {
+             return \Illuminate\Support\Carbon::parse($this->pay_until_date)->format($this->date_format);
+        }
         return $this->date->copy()->addDays($this->pay_until_days)->format($this->date_format);
     }
 }

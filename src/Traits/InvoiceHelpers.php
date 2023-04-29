@@ -203,9 +203,7 @@ trait InvoiceHelpers
 
     public function getLogo()
     {
-        $file = new File($this->logo);
-
-        return 'data:' . $file->getMimeType() . ';base64,' . base64_encode($file->getContent());
+        return 'data:image/jpg;base64,'.base64_encode(file_get_contents($this->logo));
     }
 
     /**

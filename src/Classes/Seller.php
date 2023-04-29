@@ -34,6 +34,9 @@ class Seller implements PartyContract
      */
     public $phone;
 
+
+    public $email;
+
     /**
      * @var \Illuminate\Config\Repository|mixed
      */
@@ -49,6 +52,7 @@ class Seller implements PartyContract
         $this->code          = config('invoices.seller.attributes.code');
         $this->vat           = config('invoices.seller.attributes.vat');
         $this->phone         = config('invoices.seller.attributes.phone');
+        $this->email         = config('invoices.seller.attributes.email');
         $this->custom_fields = config('invoices.seller.attributes.custom_fields');
     }
 }
